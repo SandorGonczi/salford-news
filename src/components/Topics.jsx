@@ -4,7 +4,7 @@ import TopicMenu from "./TopicMenu";
 const Topics = () => {
   return (
     <div>
-      <TopicMenu />s
+      <TopicMenu />
       <Articles />
     </div>
   );

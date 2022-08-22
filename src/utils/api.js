@@ -16,9 +16,17 @@ export const fetchTopics = () => {
     });
 };
 
-export const fetchArticlesByTopic = (chosenTopic) => {
+export const fetchArticlesByTopic = (topic) => {
   return axios
-    .get(`https://salford-news.herokuapp.com/api/articles?topic=${chosenTopic}`)
+    .get(`https://salford-news.herokuapp.com/api/articles?topic=${topic}`)
+    .then(({ data }) => {
+      return data;
+    });
+};
+
+export const fetchArticleById = (article_id) => {
+  return axios
+    .get(`https://salford-news.herokuapp.com/api/articles/${article_id}`)
     .then(({ data }) => {
       return data;
     });

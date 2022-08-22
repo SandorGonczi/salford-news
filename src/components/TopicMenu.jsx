@@ -12,7 +12,7 @@ const TopicMenu = ({ chosenTopic, setTopic }) => {
   }, []);
 
   return (
-    <div>
+    <div className="TopicMenu">
       {allTopics.map((topic, index) => {
         return (
           <section key={index}>
