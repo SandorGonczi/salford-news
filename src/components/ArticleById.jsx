@@ -1,18 +1,24 @@
 import { fetchArticleById } from "../utils/api";
 import Votes from "./Votes";
+import Comments from "./Comments";
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 const ArticleById = () => {
   const { article_id } = useParams();
 
-  const [article, setArticle] = useState({});
+  const [article, setArticle] = useState(null);
 
   useEffect(() => {
     fetchArticleById(article_id).then(({ article }) => {
       setArticle(article);
     });
   }, [article_id]);
+
+  if (article === null) {
+    return <p>Loading the Article... </p>;
+  }
 
   return (
     <div>
@@ -24,6 +30,7 @@ const ArticleById = () => {
         <p>{article.body}</p>
       </section>
       <Votes article={article} />
+      <Comments article={article} />
     </div>
   );
 };

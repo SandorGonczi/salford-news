@@ -35,6 +35,10 @@
   min-width: 200px;
 }
 
+.CommentCard {
+  border: solid blue 1px
+}
+
 .Votes {
   border: solid black 2px
 }

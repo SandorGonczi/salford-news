@@ -49,3 +49,14 @@ export const patchVotes = (article_id, incOrDec) => {
       return data;
     });
 };
+
+export const fetchComments = (article_id) => {
+  return axios
+    .get(
+      `https://salford-news.herokuapp.com/api/articles/${article_id}/comments`
+    )
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+};
