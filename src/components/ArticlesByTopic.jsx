@@ -8,7 +8,7 @@ import TopicMenu from "./TopicMenu";
 const ArticlesByTopic = () => {
   const { topic } = useParams();
 
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState(null);
 
   useEffect(() => {
     if (topic)
@@ -20,6 +20,10 @@ const ArticlesByTopic = () => {
         setArticles(articles);
       });
   }, [topic]);
+
+  if (articles === null) {
+    return <p>Loading the Articles... </p>;
+  }
 
   return (
     <div>
