@@ -9,7 +9,6 @@ const ArticleById = () => {
 
   useEffect(() => {
     fetchArticleById(article_id).then(({ article }) => {
-      console.log(article);
       setArticle(article);
     });
   }, [article_id]);

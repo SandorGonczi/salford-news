@@ -18,6 +18,18 @@
 
 }
 
+.loggedinUser_img {
+  width: 50px;
+}
+
+.users_img {
+  width : 100px;
+}
+
+.loggedInUser_text {
+ font-size: 0.5em;
+}
+
 .ArticleCard {
   max-width: 600px;
   min-width: 200px;

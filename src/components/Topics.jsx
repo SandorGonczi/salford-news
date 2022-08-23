@@ -1,11 +1,11 @@
-import Articles from "./Articles";
+import ArticlesByTopic from "./ArticlesByTopic";
 import TopicMenu from "./TopicMenu";
 
 const Topics = () => {
   return (
     <div>
       <TopicMenu />
-      <Articles />
+      <ArticlesByTopic />
     </div>
   );
 };
