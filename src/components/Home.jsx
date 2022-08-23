@@ -1,7 +1,7 @@
-import Articles from "./Articles";
+import ArticlesByTopic from "./ArticlesByTopic";
 
 const Home = () => {
-  return <Articles />;
+  return <ArticlesByTopic />;
 };
 
 export default Home;

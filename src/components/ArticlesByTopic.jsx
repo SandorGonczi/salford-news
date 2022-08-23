@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { fetchArticlesByTopic } from "../utils/api";
+import { fetchArticles, fetchArticlesByTopic } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import TopicMenu from "./TopicMenu";
 
@@ -11,14 +11,19 @@ const ArticlesByTopic = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetchArticlesByTopic(topic).then(({ articles }) => {
-      setArticles(articles);
-    });
+    if (topic)
+      fetchArticlesByTopic(topic).then(({ articles }) => {
+        setArticles(articles);
+      });
+    else
+      fetchArticles().then(({ articles }) => {
+        setArticles(articles);
+      });
   }, [topic]);
 
   return (
     <div>
-      <TopicMenu />
+      {topic && <TopicMenu />}
       <section>
         <ul>
           {articles.map((article, index) => {

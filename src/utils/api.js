@@ -31,3 +31,11 @@ export const fetchArticleById = (article_id) => {
       return data;
     });
 };
+
+export const fetchUsers = () => {
+  return axios
+    .get(`https://salford-news.herokuapp.com/api/users`)
+    .then(({ data }) => {
+      return data;
+    });
+};
