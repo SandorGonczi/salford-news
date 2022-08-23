@@ -6,9 +6,9 @@ const Votes = ({ article }) => {
   const [ifVoted, setIfVoted] = useState(false);
 
   const incrementVotes = () => {
-    let incOrDec = 0;
+    let incOrDec = 1;
     if (ifVoted) incOrDec = -1;
-    else incOrDec = 1;
+
     setOptimisticVotes((currOptimisticVotes) => {
       return currOptimisticVotes + incOrDec;
     });
@@ -23,7 +23,7 @@ const Votes = ({ article }) => {
   return (
     <section className="Votes">
       <p>Votes: {article.votes + optimisticVotes} </p>
-      <button onClick={incrementVotes}> Like/Unlike </button>
+      <button onClick={incrementVotes}> {ifVoted ? "Unlike" : "Like"}</button>
     </section>
   );
 };
