@@ -1,4 +1,5 @@
 import { fetchArticleById } from "../utils/api";
+import Votes from "./Votes";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
@@ -14,13 +15,16 @@ const ArticleById = () => {
   }, [article_id]);
 
   return (
-    <section className="ArticleCard">
-      <h3>{article.title}</h3>
-      <p>
-        created by {article.author} at {Date(article.created_at)}
-      </p>
-      <p>{article.body}</p>
-    </section>
+    <div>
+      <section className="Article">
+        <h3>{article.title}</h3>
+        <p>
+          created by {article.author} at {Date(article.created_at)}
+        </p>
+        <p>{article.body}</p>
+      </section>
+      <Votes article={article} />
+    </div>
   );
 };
 

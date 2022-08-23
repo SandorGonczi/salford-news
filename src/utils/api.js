@@ -39,3 +39,13 @@ export const fetchUsers = () => {
       return data;
     });
 };
+
+export const patchVotes = (article_id, incOrDec) => {
+  return axios
+    .patch(`https://salford-news.herokuapp.com/api/articles/${article_id}`, {
+      inc_votes: incOrDec,
+    })
+    .then(({ data }) => {
+      return data;
+    });
+};
