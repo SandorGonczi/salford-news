@@ -9,21 +9,37 @@ const ArticlesByTopic = () => {
   const { topic } = useParams();
 
   const [articles, setArticles] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     if (topic)
-      fetchArticlesByTopic(topic).then(({ articles }) => {
-        setArticles(articles);
-      });
+      fetchArticlesByTopic(topic)
+        .then(({ articles }) => {
+          setIsLoading(false);
+          setIsError(false);
+          setArticles(articles);
+        })
+        .catch(() => {
+          setIsLoading(false);
+          setIsError(true);
+        });
     else
-      fetchArticles().then(({ articles }) => {
-        setArticles(articles);
-      });
+      fetchArticles()
+        .then(({ articles }) => {
+          setIsLoading(false);
+          setIsError(false);
+          setArticles(articles);
+        })
+        .catch(() => {
+          setIsLoading(false);
+          setIsError(true);
+        });
   }, [topic]);
 
-  if (articles === null) {
-    return <p>Loading the Articles... </p>;
-  }
+  if (isLoading) return <p>Loading the Articles... </p>;
+  if (isError) return <p>Error during loading the articles! </p>;
 
   return (
     <div>

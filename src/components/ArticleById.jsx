@@ -9,16 +9,24 @@ const ArticleById = () => {
   const { article_id } = useParams();
 
   const [article, setArticle] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetchArticleById(article_id).then(({ article }) => {
-      setArticle(article);
-    });
+    fetchArticleById(article_id)
+      .then(({ article }) => {
+        setIsLoading(false);
+        setIsError(false);
+        setArticle(article);
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setIsError(true);
+      });
   }, [article_id]);
 
-  if (article === null) {
-    return <p>Loading the Article... </p>;
-  }
+  if (isLoading) return <p>Loading the Article... </p>;
+  if (isError) return <p>Error during loading the article! </p>;
 
   return (
     <div>

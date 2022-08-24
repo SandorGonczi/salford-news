@@ -4,16 +4,24 @@ import CommentCard from "./CommentCard";
 
 const Comments = ({ article }) => {
   const [comments, setComments] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetchComments(article.article_id).then(({ comments }) => {
-      setComments(comments);
-    });
+    fetchComments(article.article_id)
+      .then(({ comments }) => {
+        setIsLoading(false);
+        setIsError(false);
+        setComments(comments);
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setIsError(true);
+      });
   }, [article.article_id]);
 
-  if (comments === null) {
-    return <p>Loading the comments... </p>;
-  }
+  if (isLoading) return <p>Loading the comments... </p>;
+  if (isError) return <p>Error during loading the comments! </p>;
 
   return (
     <div>

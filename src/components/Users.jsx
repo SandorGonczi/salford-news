@@ -5,12 +5,24 @@ import { UserContext } from "../utils/userContext";
 const Users = () => {
   const [users, setUsers] = useState([]);
   const { setLoggedInUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetchUsers().then(({ users }) => {
-      setUsers(users);
-    });
+    fetchUsers()
+      .then(({ users }) => {
+        setIsLoading(false);
+        setIsError(false);
+        setUsers(users);
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setIsError(true);
+      });
   }, []);
+
+  if (isLoading) return <p>Loading Users... </p>;
+  if (isError) return <p>Error during loading Users! </p>;
 
   return (
     <section>
