@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchComments } from "../utils/api";
 import CommentCard from "./CommentCard";
 
-const Comments = ({ article }) => {
+const Comments = ({ article, newComment }) => {
   const [comments, setComments] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -18,7 +18,7 @@ const Comments = ({ article }) => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [article.article_id]);
+  }, [article.article_id, newComment]);
 
   if (isLoading) return <p>Loading the comments... </p>;
   if (isError) return <p>Error during loading the comments! </p>;

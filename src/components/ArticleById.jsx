@@ -1,12 +1,14 @@
 import { fetchArticleById } from "../utils/api";
 import Votes from "./Votes";
 import Comments from "./Comments";
+import PostComment from "./PostComment";
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 const ArticleById = () => {
   const { article_id } = useParams();
+  const [newComment, setNewComment] = useState("");
 
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +40,12 @@ const ArticleById = () => {
         <p>{article.body}</p>
       </section>
       <Votes article={article} />
-      <Comments article={article} />
+      <PostComment
+        article={article}
+        newComment={newComment}
+        setNewComment={setNewComment}
+      />
+      <Comments article={article} newComment={newComment} />
     </div>
   );
 };
