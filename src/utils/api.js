@@ -56,7 +56,17 @@ export const fetchComments = (article_id) => {
       `https://salford-news.herokuapp.com/api/articles/${article_id}/comments`
     )
     .then(({ data }) => {
-      console.log(data);
+      return data;
+    });
+};
+
+export const postComment = (article_id, username, comment) => {
+  return axios
+    .post(
+      `https://salford-news.herokuapp.com/api/articles/${article_id}/comments`,
+      { username: username, body: comment }
+    )
+    .then(({ data }) => {
       return data;
     });
 };

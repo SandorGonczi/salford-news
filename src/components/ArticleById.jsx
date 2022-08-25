@@ -1,15 +1,18 @@
 import { fetchArticleById } from "../utils/api";
 import Votes from "./Votes";
 import Comments from "./Comments";
+import PostComment from "./PostComment";
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 const ArticleById = () => {
   const { article_id } = useParams();
+  const [newComment, setNewComment] = useState("");
 
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [toRender, setToRender] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
@@ -33,12 +36,18 @@ const ArticleById = () => {
       <section className="Article">
         <h3>{article.title}</h3>
         <p>
-          created by {article.author} at {Date(article.created_at)}
+          created by {article.author} at {article.created_at}
         </p>
         <p>{article.body}</p>
       </section>
       <Votes article={article} />
-      <Comments article={article} />
+      <PostComment
+        article={article}
+        newComment={newComment}
+        setNewComment={setNewComment}
+        setToRender={setToRender}
+      />
+      <Comments article={article} toRender={toRender} />
     </div>
   );
 };
