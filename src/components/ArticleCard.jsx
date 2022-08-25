@@ -6,7 +6,8 @@ const ArticleCard = ({ article }) => {
       <section className="ArticleCard">
         <h3>{article.title}</h3>
         <p>
-          created by {article.author} at {Date(article.created_at)}
+          created by {article.author} at {article.created_at} Votes:{" "}
+          {article.votes} Comments: {article.comment_count}
         </p>
       </section>
     </Link>

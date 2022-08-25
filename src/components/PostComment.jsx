@@ -4,12 +4,13 @@ import { useContext } from "react";
 
 import { postComment } from "../utils/api";
 
-const PostComment = ({ article, newComment, setNewComment, setToRender }) => {
+const PostComment = ({ article, setToRender }) => {
   const { loggedInUser } = useContext(UserContext);
 
   const [isPosting, setIsPosting] = useState(false);
   const [isPosted, setIsPosted] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [newComment, setNewComment] = useState("");
 
   const handleChange = (event) => {
     setNewComment(event.target.value);
