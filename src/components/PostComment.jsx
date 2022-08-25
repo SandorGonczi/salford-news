@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 import { postComment } from "../utils/api";
 
-const PostComment = ({ article, newComment, setNewComment }) => {
+const PostComment = ({ article, newComment, setNewComment, setToRender }) => {
   const { loggedInUser } = useContext(UserContext);
 
   const [isPosting, setIsPosting] = useState(false);
@@ -25,6 +25,7 @@ const PostComment = ({ article, newComment, setNewComment }) => {
           setIsPosting(false);
           setIsPosted(true);
           setIsError(false);
+          setToRender((act) => !act);
           setNewComment("");
         })
         .catch(() => {

@@ -12,6 +12,7 @@ const ArticleById = () => {
 
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [toRender, setToRender] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const ArticleById = () => {
       <section className="Article">
         <h3>{article.title}</h3>
         <p>
-          created by {article.author} at {Date(article.created_at)}
+          created by {article.author} at {article.created_at}
         </p>
         <p>{article.body}</p>
       </section>
@@ -44,8 +45,9 @@ const ArticleById = () => {
         article={article}
         newComment={newComment}
         setNewComment={setNewComment}
+        setToRender={setToRender}
       />
-      <Comments article={article} newComment={newComment} />
+      <Comments article={article} toRender={toRender} />
     </div>
   );
 };
