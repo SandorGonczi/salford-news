@@ -8,12 +8,12 @@ import { useParams } from "react-router";
 
 const ArticleById = () => {
   const { article_id } = useParams();
-  const [newComment, setNewComment] = useState("");
 
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [toRender, setToRender] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  const [toRender, setToRender] = useState(false);
 
   useEffect(() => {
     fetchArticleById(article_id)
@@ -41,12 +41,7 @@ const ArticleById = () => {
         <p>{article.body}</p>
       </section>
       <Votes article={article} />
-      <PostComment
-        article={article}
-        newComment={newComment}
-        setNewComment={setNewComment}
-        setToRender={setToRender}
-      />
+      <PostComment article={article} setToRender={setToRender} />
       <Comments article={article} toRender={toRender} />
     </div>
   );

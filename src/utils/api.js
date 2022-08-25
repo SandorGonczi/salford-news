@@ -1,13 +1,5 @@
 import axios from "axios";
 
-export const fetchArticles = () => {
-  return axios
-    .get("https://salford-news.herokuapp.com/api/articles")
-    .then(({ data }) => {
-      return data;
-    });
-};
-
 export const fetchTopics = () => {
   return axios
     .get("https://salford-news.herokuapp.com/api/topics")
@@ -16,9 +8,9 @@ export const fetchTopics = () => {
     });
 };
 
-export const fetchArticlesByTopic = (topic) => {
+export const fetchArticles = (queryStr) => {
   return axios
-    .get(`https://salford-news.herokuapp.com/api/articles?topic=${topic}`)
+    .get(`https://salford-news.herokuapp.com/api/articles${queryStr}`)
     .then(({ data }) => {
       return data;
     });
