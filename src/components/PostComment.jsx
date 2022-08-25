@@ -38,11 +38,13 @@ const PostComment = ({ article, newComment, setNewComment }) => {
     <section className="PostComment">
       <form onSubmit={handleSubmit}>
         <label htmlFor="comment-input">Add your comment</label>
-        <input
+        <textarea
+          cols="40"
+          rows="5"
           onChange={handleChange}
           id="comment-input"
           value={newComment}
-        ></input>
+        ></textarea>
         {!isPosting && <button>Comment</button>}
       </form>
       {isError && <p>Error during posting the comment!</p>}

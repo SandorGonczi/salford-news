@@ -27,13 +27,21 @@ const Comments = ({ article, newComment }) => {
     <div>
       <section>
         <ul>
-          {comments.map((comment, index) => {
-            return (
-              <li key={index}>
-                <CommentCard comment={comment} />
-              </li>
-            );
-          })}
+          {comments
+            .sort((a, b) =>
+              a.created_at > b.created_at
+                ? -1
+                : a.created_at < b.created_at
+                ? 1
+                : 0
+            )
+            .map((comment, index) => {
+              return (
+                <li key={index}>
+                  <CommentCard comment={comment} />
+                </li>
+              );
+            })}
         </ul>
       </section>
     </div>
