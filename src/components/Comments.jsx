@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { fetchComments } from "../utils/api";
 import CommentCard from "./CommentCard";
 
-const Comments = ({ article, toRender }) => {
+const Comments = ({ article, toRender, setToRender }) => {
   const [comments, setComments] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
@@ -13,6 +15,7 @@ const Comments = ({ article, toRender }) => {
         setIsLoading(false);
         setIsError(false);
         setComments(comments);
+        setIsDeleting(false);
       })
       .catch(() => {
         setIsLoading(false);
@@ -38,7 +41,12 @@ const Comments = ({ article, toRender }) => {
             .map((comment, index) => {
               return (
                 <li key={index}>
-                  <CommentCard comment={comment} />
+                  <CommentCard
+                    comment={comment}
+                    setToRender={setToRender}
+                    setIsDeleting={setIsDeleting}
+                    isDeleting={isDeleting}
+                  />
                 </li>
               );
             })}

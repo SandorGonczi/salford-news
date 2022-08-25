@@ -42,7 +42,11 @@ const ArticleById = () => {
       </section>
       <Votes article={article} />
       <PostComment article={article} setToRender={setToRender} />
-      <Comments article={article} toRender={toRender} />
+      <Comments
+        article={article}
+        toRender={toRender}
+        setToRender={setToRender}
+      />
     </div>
   );
 };
