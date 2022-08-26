@@ -62,3 +62,11 @@ export const postComment = (article_id, username, comment) => {
       return data;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return axios
+    .delete(`https://salford-news.herokuapp.com/api/comments/${comment_id}`)
+    .then(({ data }) => {
+      return data;
+    });
+};
