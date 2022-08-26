@@ -7,7 +7,7 @@ const Comments = ({ article, toRender, setToRender }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState(null);
 
   useEffect(() => {
     fetchComments(article.article_id)
@@ -17,14 +17,17 @@ const Comments = ({ article, toRender, setToRender }) => {
         setComments(comments);
         setIsDeleting(false);
       })
-      .catch(() => {
+      .catch((err) => {
         setIsLoading(false);
-        setIsError(true);
+        setIsError(err);
       });
   }, [article.article_id, toRender]);
 
   if (isLoading) return <p>Loading the comments... </p>;
-  if (isError) return <p>Error during loading the comments! </p>;
+  if (isError)
+    return (
+      <p>Error during loading/deleting process, please refresh the page! </p>
+    );
 
   return (
     <div>
@@ -46,6 +49,7 @@ const Comments = ({ article, toRender, setToRender }) => {
                     setToRender={setToRender}
                     setIsDeleting={setIsDeleting}
                     isDeleting={isDeleting}
+                    setIsError={setIsError}
                   />
                 </li>
               );
