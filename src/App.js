@@ -31,6 +31,7 @@ function App() {
           <Route path="/users" element={<Users />}></Route>
           <Route path="/topics/:topic" element={<Articles />}></Route>
           <Route path="/article/:article_id" element={<ArticleById />}></Route>
+          <Route path="/*" element={<h2>Page not found</h2>}></Route>
         </Routes>
       </div>
     </UserContext.Provider>
