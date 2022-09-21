@@ -1,7 +1,7 @@
-import Articles from "./Articles";
+import TrendingArticles from "./TrendingArticles";
 
 const Home = () => {
-  return <Articles />;
+  return <TrendingArticles />;
 };
 
 export default Home;

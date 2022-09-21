@@ -52,15 +52,13 @@ const Articles = () => {
       />
 
       <section>
-        <ul>
-          {articles.map((article, index) => {
-            return (
-              <li key={index}>
-                <ArticleCard article={article} />
-              </li>
-            );
-          })}
-        </ul>
+        {articles.map((article, index) => {
+          return (
+            <div key={index}>
+              <ArticleCard article={article} />
+            </div>
+          );
+        })}
       </section>
     </div>
   );

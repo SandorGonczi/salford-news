@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header className="header">
-      <h1>Salford Tech News!</h1>
+      <Link className="navlink" to="/">
+        <h1>Salford Tech News!</h1>
+      </Link>
     </header>
   );
 };

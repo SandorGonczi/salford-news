@@ -70,3 +70,14 @@ export const deleteComment = (comment_id) => {
       return data;
     });
 };
+
+export const fetchTrendingArticles = () => {
+  return axios
+    .get(
+      `https://salford-news.herokuapp.com/api/articles?sortBy=votes&&order=desc`
+    )
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+};
