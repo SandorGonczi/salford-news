@@ -77,7 +77,6 @@ export const fetchTrendingArticles = () => {
       `https://salford-news.herokuapp.com/api/articles?sortBy=votes&&order=desc`
     )
     .then(({ data }) => {
-      console.log(data);
       return data;
     });
 };

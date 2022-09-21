@@ -1,16 +1,30 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ArticleCard = ({ article }) => {
+  const date = article.created_at.slice(0, -14);
+
+  let navigate = useNavigate();
+
+  const handleClick = (article_id) => {
+    navigate(`/article/${article_id}`);
+  };
+
   return (
-    <Link to={`/article/${article.article_id}`}>
-      <section className="ArticleCard">
-        <h3>{article.title}</h3>
-        <p>
-          created by {article.author} at {article.created_at} Votes:{" "}
-          {article.votes} Comments: {article.comment_count}
-        </p>
-      </section>
-    </Link>
+    <section
+      className="article-card"
+      onClick={() => {
+        handleClick(article.article_id);
+      }}
+    >
+      <h2 className="article-title">{article.title}</h2>
+      <p className="article-topic">{article.topic}</p>
+      <p className="article-author">{article.author}</p>
+      <p className="article-votes-comments">
+        <span>Votes:</span> {article.votes} <span>Comments:</span>{" "}
+        {article.comment_count}
+      </p>
+      <p className="article-date">{date}</p>
+    </section>
   );
 };
 
