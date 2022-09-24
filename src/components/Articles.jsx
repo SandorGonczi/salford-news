@@ -37,7 +37,13 @@ const Articles = () => {
       });
   }, [topic, order, sortBy]);
 
-  if (isLoading) return <p>Loading the Articles... </p>;
+  if (isLoading)
+    return (
+      <section className="loading">
+        <h2>Loading...</h2>
+        <div className="loader"></div>
+      </section>
+    );
   if (isError) return <p>Error during loading the articles! </p>;
 
   return (
@@ -51,7 +57,7 @@ const Articles = () => {
         setSearchParams={setSearchParams}
       />
 
-      <section>
+      <section className="article-container">
         {articles.map((article, index) => {
           return (
             <div key={index}>

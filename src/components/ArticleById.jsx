@@ -28,7 +28,13 @@ const ArticleById = () => {
       });
   }, [article_id]);
 
-  if (isLoading) return <p>Loading the Article... </p>;
+  if (isLoading)
+    return (
+      <section className="loading">
+        <h2>Loading...</h2>
+        <div className="loader"></div>
+      </section>
+    );
   if (isError) return <p>Error during loading the article! </p>;
 
   return (

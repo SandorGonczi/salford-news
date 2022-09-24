@@ -13,7 +13,7 @@ const TrendingArticles = () => {
       .then(({ articles }) => {
         setIsLoading(false);
         setIsError(false);
-        setTrendingArticles(articles.slice(0, 3));
+        setTrendingArticles(articles.slice(0, 4));
       })
       .catch(() => {
         setIsLoading(false);
@@ -21,21 +21,25 @@ const TrendingArticles = () => {
       });
   }, []);
 
-  if (isLoading) return <p>Loading the Articles... </p>;
+  if (isLoading)
+    return (
+      <section className="loading">
+        <h2>Loading...</h2>
+        <div className="loader"></div>
+      </section>
+    );
   if (isError) return <p>Error during loading the articles! </p>;
 
   return (
-    <div>
-      <section>
-        {trendingArticles.map((article, index) => {
-          return (
-            <div key={index}>
-              <ArticleCard article={article} />
-            </div>
-          );
-        })}
-      </section>
-    </div>
+    <section className="article-container">
+      {trendingArticles.map((article, index) => {
+        return (
+          <div key={index}>
+            <ArticleCard article={article} />
+          </div>
+        );
+      })}
+    </section>
   );
 };
 

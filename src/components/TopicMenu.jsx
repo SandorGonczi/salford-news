@@ -12,14 +12,11 @@ const TopicMenu = ({ chosenTopic, setTopic }) => {
   }, []);
 
   return (
-    <div className="TopicMenu">
+    <div className="topicmenu">
       {allTopics.map((topic, index) => {
         return (
           <section key={index}>
-            <Link to={`/topics/${topic.slug}`}>
-              {topic.slug} - {topic.description}
-            </Link>
-            <br></br>
+            <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
           </section>
         );
       })}

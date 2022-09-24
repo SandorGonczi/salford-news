@@ -22,7 +22,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
-      <div className="App">
+      <div className="app">
         <Header />
         <NavBar />
         <Routes>

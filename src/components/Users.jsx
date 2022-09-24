@@ -21,29 +21,35 @@ const Users = () => {
       });
   }, []);
 
-  if (isLoading) return <p>Loading Users... </p>;
+  if (isLoading)
+    return (
+      <section className="loading">
+        <h2>Loading...</h2>
+        <div className="loader"></div>
+      </section>
+    );
   if (isError) return <p>Error during loading Users! </p>;
 
   return (
-    <section>
-      <ul>
-        {users.map((user, index) => {
-          return (
-            <li key={index}>
-              <h2>{user.username}</h2>
-              <img
-                className="users_img"
-                src={user.avatar_url}
-                alt={user.username}
-              />
-
-              <button onClick={() => setLoggedInUser(user)}>
-                Select this user!
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+    <section className="users">
+      {users.map((user, index) => {
+        return (
+          <div key={index} className="user">
+            <p>{user.username}</p>
+            <img
+              className="user_img"
+              src={user.avatar_url}
+              alt={user.username}
+            />
+            <button
+              className="userselectbutton"
+              onClick={() => setLoggedInUser(user)}
+            >
+              Select
+            </button>
+          </div>
+        );
+      })}
     </section>
   );
 };

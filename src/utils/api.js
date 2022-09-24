@@ -80,3 +80,13 @@ export const fetchTrendingArticles = () => {
       return data;
     });
 };
+
+export const fetchLatestArticles = () => {
+  return axios
+    .get(
+      `https://salford-news.herokuapp.com/api/articles?sortBy=created_at&&order=desc`
+    )
+    .then(({ data }) => {
+      return data;
+    });
+};
