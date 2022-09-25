@@ -14,13 +14,13 @@ const PostComment = ({ article, setToRender }) => {
 
   const handleChange = (event) => {
     setNewComment(event.target.value);
+    setIsPosted(false);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (newComment.length > 2) {
       setIsPosting(true);
-      setIsPosted(false);
       postComment(article.article_id, loggedInUser.username, newComment)
         .then(() => {
           setIsPosting(false);
@@ -37,22 +37,23 @@ const PostComment = ({ article, setToRender }) => {
   };
 
   return (
-    <section className="PostComment">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="comment-input">Add your comment</label>
+    <section className="postcomment">
+      <form className="commentform" onSubmit={handleSubmit}>
         <textarea
-          cols="40"
-          rows="5"
+          rows="6"
           onChange={handleChange}
           id="comment-input"
+          placeholder="Add your comment..."
           value={newComment}
         ></textarea>
-        {!isPosting && <button>Comment</button>}
+        {!isPosting && <button className="postcomment-button">Comment</button>}
       </form>
       {isError && <p>Error during posting the comment!</p>}
-      {isPosted && <p>Comment Posted!</p>}
+      {isPosted && <p className="comment-posted">Comment Posted!</p>}
       {newComment.length !== 0 && newComment.length < 3 && (
-        <p>Comment must be mimimum 3 character</p>
+        <p className="comment-warning">
+          Comments must be a mimimum of 3 characters!
+        </p>
       )}
     </section>
   );

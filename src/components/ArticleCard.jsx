@@ -16,14 +16,20 @@ const ArticleCard = ({ article }) => {
         handleClick(article.article_id);
       }}
     >
-      <h2 className="article-title">{article.title}</h2>
-      <p className="article-topic">{article.topic}</p>
-      <p className="article-author">{article.author}</p>
-      <p className="article-votes-comments">
-        <span>Votes:</span> {article.votes} <span>Comments:</span>{" "}
-        {article.comment_count}
-      </p>
-      <p className="article-date">{date}</p>
+      <div className="article-top">
+        <h2 className="article-title">{article.title}</h2>
+        <p className="article-author">by {article.author}</p>
+        <p className="article-votes-comments">
+          <div>
+            Votes: {article.votes} &nbsp;&nbsp;&nbsp; Comments:{" "}
+            {article.comment_count}
+          </div>
+        </p>
+      </div>
+      <div className="article-bottom">
+        <p className="article-topic">{article.topic}</p>
+        <p className="article-date">{date}</p>
+      </div>
     </section>
   );
 };

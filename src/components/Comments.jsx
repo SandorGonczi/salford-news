@@ -23,38 +23,43 @@ const Comments = ({ article, toRender, setToRender }) => {
       });
   }, [article.article_id, toRender]);
 
-  if (isLoading) return <p>Loading the comments... </p>;
+  if (isLoading)
+    return (
+      <section className="loading">
+        <h2>Loading...</h2>
+        <div className="loader"></div>
+      </section>
+    );
   if (isError)
     return (
       <p>Error during loading/deleting process, please refresh the page! </p>
     );
 
   return (
-    <div>
+    <div className="comments">
+      <div className="comments-heading">Comments:</div>
       <section>
-        <ul>
-          {comments
-            .sort((a, b) =>
-              a.created_at > b.created_at
-                ? -1
-                : a.created_at < b.created_at
-                ? 1
-                : 0
-            )
-            .map((comment, index) => {
-              return (
-                <li key={index}>
-                  <CommentCard
-                    comment={comment}
-                    setToRender={setToRender}
-                    setIsDeleting={setIsDeleting}
-                    isDeleting={isDeleting}
-                    setIsError={setIsError}
-                  />
-                </li>
-              );
-            })}
-        </ul>
+        {comments
+          .sort((a, b) =>
+            a.created_at > b.created_at
+              ? -1
+              : a.created_at < b.created_at
+              ? 1
+              : 0
+          )
+          .map((comment, index) => {
+            return (
+              <div key={index}>
+                <CommentCard
+                  comment={comment}
+                  setToRender={setToRender}
+                  setIsDeleting={setIsDeleting}
+                  isDeleting={isDeleting}
+                  setIsError={setIsError}
+                />
+              </div>
+            );
+          })}
       </section>
     </div>
   );

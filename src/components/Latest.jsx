@@ -37,8 +37,8 @@ const Latest = () => {
   if (isError) return <p>Error during loading the articles! </p>;
 
   return (
-    <section className="latest">
-      <article>
+    <section className="latest-container">
+      <article className="latest">
         <h3
           onClick={() => {
             handleClick(latest.article_id);
@@ -49,7 +49,6 @@ const Latest = () => {
         <p>{latest.author}</p>
         <p>{latest.created_at.slice(0, -14)}</p>
       </article>
-      <div></div>
     </section>
   );
 };

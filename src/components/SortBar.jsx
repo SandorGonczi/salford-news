@@ -1,8 +1,9 @@
 const SortBar = ({ order, setOrder, sortBy, setSortBy, setSearchParams }) => {
   return (
-    <section>
-      <p>Sort by: </p>
+    <section className="sortbar">
+      <p>Sort by:&nbsp;&nbsp;&nbsp; </p>
       <select
+        className="dropdown-sortby"
         value={sortBy}
         onChange={(event) => {
           setSortBy(event.target.value);
@@ -14,6 +15,7 @@ const SortBar = ({ order, setOrder, sortBy, setSortBy, setSearchParams }) => {
         <option value="comment_count">comments</option>
       </select>
       <select
+        className="dropdown-sortby"
         value={order}
         onChange={(event) => {
           setOrder(event.target.value);

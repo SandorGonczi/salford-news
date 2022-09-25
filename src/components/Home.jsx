@@ -6,7 +6,7 @@ const Home = () => {
     <section className="home">
       <h2>Latest news:</h2>
       <Latest />
-      <h2>Terinding Now!</h2>
+      <h2>Terinding Now:</h2>
       <TrendingArticles />;
     </section>
   );

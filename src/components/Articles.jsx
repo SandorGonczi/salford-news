@@ -49,23 +49,25 @@ const Articles = () => {
   return (
     <div>
       {topic && <TopicMenu />}
-      <SortBar
-        order={order}
-        setOrder={setOrder}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-        setSearchParams={setSearchParams}
-      />
+      <div className="sortbar-article-container">
+        <SortBar
+          order={order}
+          setOrder={setOrder}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          setSearchParams={setSearchParams}
+        />
 
-      <section className="article-container">
-        {articles.map((article, index) => {
-          return (
-            <div key={index}>
-              <ArticleCard article={article} />
-            </div>
-          );
-        })}
-      </section>
+        <section className="article-container">
+          {articles.map((article, index) => {
+            return (
+              <div key={index}>
+                <ArticleCard article={article} />
+              </div>
+            );
+          })}
+        </section>
+      </div>
     </div>
   );
 };

@@ -15,8 +15,10 @@ const TopicMenu = ({ chosenTopic, setTopic }) => {
     <div className="topicmenu">
       {allTopics.map((topic, index) => {
         return (
-          <section key={index}>
-            <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
+          <section className="topiclinks" key={index}>
+            <Link className="topiclink" to={`/topics/${topic.slug}`}>
+              {topic.slug}
+            </Link>
           </section>
         );
       })}

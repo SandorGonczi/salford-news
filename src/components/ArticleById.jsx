@@ -38,21 +38,23 @@ const ArticleById = () => {
   if (isError) return <p>Error during loading the article! </p>;
 
   return (
-    <div>
-      <section className="Article">
+    <div className="articlebyid">
+      <section>
         <h3>{article.title}</h3>
-        <p>
-          created by {article.author} at {article.created_at}
+        <p className="articlebyid-author">
+          by {article.author} on {article.created_at.slice(0, -14)}
         </p>
-        <p>{article.body}</p>
+        <p className="articlebyid-body"> {article.body}</p>
       </section>
       <Votes article={article} />
-      <PostComment article={article} setToRender={setToRender} />
-      <Comments
-        article={article}
-        toRender={toRender}
-        setToRender={setToRender}
-      />
+      <div className="comment-container">
+        <PostComment article={article} setToRender={setToRender} />
+        <Comments
+          article={article}
+          toRender={toRender}
+          setToRender={setToRender}
+        />
+      </div>
     </div>
   );
 };

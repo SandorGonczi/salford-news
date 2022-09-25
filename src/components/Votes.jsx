@@ -21,9 +21,14 @@ const Votes = ({ article }) => {
   };
 
   return (
-    <section className="Votes">
-      <p>Votes: {article.votes + optimisticVotes} </p>
-      <button onClick={incrementVotes}> {ifVoted ? "Unlike" : "Like"}</button>
+    <section className="votes-container">
+      <div className="votes">
+        <p>Votes: {article.votes + optimisticVotes} </p>
+        <button className="votes-button" onClick={incrementVotes}>
+          {" "}
+          {ifVoted ? "Unvote" : "Vote"}
+        </button>
+      </div>
     </section>
   );
 };
